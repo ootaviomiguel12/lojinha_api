@@ -3,7 +3,7 @@
 # 🛒 Lojinha API RESTful
 
 [![Java Version](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)](https://www.oracle.com/java/)
-[![Spring Boot][(https://img.shields.io/badge/Spring%20Boot-3.2.5-brightgreen?style=for-the-badge&logo=springboot)]](https://img.shields.io/badge/Spring%20Boot-4.1-green?logo=springboot)(https://spring.io/projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.1-brightgreen?style=for-the-badge&logo=springboot)](https://spring.io/projects/spring-boot)
 [![Swagger](https://img.shields.io/badge/OpenAPI-Swagger-85EA2D?style=for-the-badge&logo=openapi-initiative&logoColor=black)](http://localhost:8080/swagger-ui.html)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
@@ -23,7 +23,7 @@ A aplicação isola completamente o domínio da infraestrutura, utiliza a camada
 
 ## ✨ Destaques da Arquitetura & Tecnologias
 
-- ⚙️ **Java 21 & Spring Boot 4.1.1** - Base sólida e moderna com o ecossistema Spring.
+- ⚙️ **Java 21 & Spring Boot 3.2.5** - Base sólida e moderna com o ecossistema Spring.
 - 📦 **Padrão DTO (Data Transfer Objects)** - Isolamento total entre entidades JPA (`@Entity`) e a API pública.
 - ✅ **Bean Validation** - Validação declarativa de entrada de dados (`@Valid`, `@NotBlank`, `@Positive`).
 - 🛡️ **Global Exception Handler** - Tratamento centralizado de erros com respostas HTTP padronizadas via `@RestControllerAdvice`.
