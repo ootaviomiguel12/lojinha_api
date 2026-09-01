@@ -23,7 +23,7 @@ A aplicação isola completamente o domínio da infraestrutura, utiliza a camada
 
 ## ✨ Destaques da Arquitetura & Tecnologias
 
-- ⚙️ **Java 21 & Spring Boot 3.2.5** - Base sólida e moderna com o ecossistema Spring.
+- ⚙️ **Java 21 & Spring Boot 4.1.1** - Base sólida e moderna com o ecossistema Spring.
 - 📦 **Padrão DTO (Data Transfer Objects)** - Isolamento total entre entidades JPA (`@Entity`) e a API pública.
 - ✅ **Bean Validation** - Validação declarativa de entrada de dados (`@Valid`, `@NotBlank`, `@Positive`).
 - 🛡️ **Global Exception Handler** - Tratamento centralizado de erros com respostas HTTP padronizadas via `@RestControllerAdvice`.
