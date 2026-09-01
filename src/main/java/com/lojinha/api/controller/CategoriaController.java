@@ -1,6 +1,6 @@
 package com.lojinha.api.controller;
 
-import com.lojinha.api.model.Categoria;
+import com.lojinha.api.dto.CategoriaDTO;
 import com.lojinha.api.service.CategoriaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +17,28 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    // GET /api/categorias - Listar todas as categorias
     @GetMapping
-    public ResponseEntity<List<Categoria>> listarTodas() {
+    public ResponseEntity<List<CategoriaDTO>> listarTodas() {
         return ResponseEntity.ok(categoriaService.listarTodas());
     }
 
-    // GET /api/categorias/{id} - Buscar categoria por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> buscarPorId(@PathVariable Long id) {
-        return categoriaService.buscarPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(categoriaService.buscarPorId(id));
     }
 
-    // POST /api/categorias - Criar uma nova categoria (com validação @Valid)
     @PostMapping
-    public ResponseEntity<Categoria> salvar(@Valid @RequestBody Categoria categoria) {
-        Categoria novaCategoria = categoriaService.salvar(categoria);
+    public ResponseEntity<CategoriaDTO> salvar(@Valid @RequestBody CategoriaDTO dto) {
+        CategoriaDTO novaCategoria = categoriaService.salvar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaCategoria);
     }
 
-    // DELETE /api/categorias/{id} - Deletar categoria por ID
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaDTO> atualizar(@PathVariable Long id, @Valid @RequestBody CategoriaDTO dto) {
+        CategoriaDTO categoriaAtualizada = categoriaService.atualizar(id, dto);
+        return ResponseEntity.ok(categoriaAtualizada);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         categoriaService.deletar(id);
