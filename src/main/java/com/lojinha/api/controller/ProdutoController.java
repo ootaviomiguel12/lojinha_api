@@ -2,6 +2,7 @@ package com.lojinha.api.controller;
 
 import com.lojinha.api.model.Produto;
 import com.lojinha.api.service.ProdutoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,7 @@ public class ProdutoController {
 
     @GetMapping
     public ResponseEntity<List<Produto>> listarTodos(){
-        List<Produto> produtos = produtoService.listarTodos();
-        return ResponseEntity.ok(produtos);
+        return ResponseEntity.ok(produtoService.listarTodos());
     }
 
     @GetMapping("/{id}")
@@ -31,21 +31,20 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<?> salvar(@RequestBody Produto produto){
-        try {
+
             Produto novoProduto = produtoService.salvar(produto);
             return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
-        }catch (RuntimeException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
         }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atualizar(@PathVariable Long id, @Valid @RequestBody Produto produto) {
+        Produto produtoAlterado = produtoService.atualizar(id, produto);
+        return ResponseEntity.ok(produtoAlterado);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id){
-        try {
-            produtoService.deletar(id);
-            return ResponseEntity.noContent().build();
-        }catch (RuntimeException e){
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        produtoService.deletar(id);
+        return ResponseEntity.noContent().build();
     }
 }

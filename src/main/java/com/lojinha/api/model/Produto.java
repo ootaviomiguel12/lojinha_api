@@ -3,6 +3,7 @@ package com.lojinha.api.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
+
 @Entity
 @Table(name = "tb_produto")
 public class Produto {
